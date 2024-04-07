@@ -1,0 +1,25 @@
+{% include 'student_header.html' %}
+<center>
+	<h1>View Activities</h1>
+	<form method="post">
+		<table class="table" style="width:500px;color:white;">
+			<tr>
+				<th>Sl no</th>
+				<th>Activities</th>
+				<th>Description</th>
+                <th>Date</th>
+                <th>Image</th>
+			</tr>
+			{% for row in data['view'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['facility']}}</td>
+				<td>{{row['description']}}</td>
+                <td>{{row['date']}}</td>
+                <td><img src="/{{row['image']}}" alt="" srcset="" width="300px"></td>
+			</tr>
+			{% endfor %}
+		</table>
+</center>
+
+{% include 'footer.html' %}

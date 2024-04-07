@@ -1,0 +1,68 @@
+{% include 'adminheader.html' %}
+      <style>
+    table {
+
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 20);
+    }
+    .btn-success { 
+        background-color: #28a745;
+        color: #fff;
+    }
+</style>
+<style>
+	th,td{
+		height: 30px;
+		color: antiquewhite;
+		padding: 15px;
+	}
+</style>
+<center>
+<h1>Contacts</h1>
+	<form method="post" enctype="multipart/form-data">
+	<table class="table" style="width:500px;color:white;">
+		<tr>
+			<th>Post</th>
+			<td><input type="text" name="post" required="" class="form-control" style="width: 250px;height: 38px;border-radius: 10px;color: white"></td>
+		</tr>
+        <tr>
+			<th>Contact</th>
+			<td><input type="number" name="contact" required="" class="form-control" style="width: 250px;height: 38px;border-radius: 10px;color: white"></td>
+		</tr>
+        <tr>
+			<th>Email</th>
+			<td><input type="email" name="email" required="" class="form-control" style="width: 250px;height: 38px;border-radius: 10px;color: white"></td>
+		</tr>
+       
+		<tr>
+			<td align="center" colspan="2">
+				<input type="submit" name="submit" value="SUBMIT" class="btn btn-primary">
+			</td>
+		</tr>
+	</table>
+
+	<table class="table" style="width:500px;color:white;">
+		
+		<tr>
+			<th>Post</th>
+			<th>Contact</th>
+            <th>Email</th>
+		</tr>
+		{% for row in data['view'] %}
+		<tr>    
+			<td>{{ row['post'] }}</td>
+            <td>{{row['contact']}}</td>
+            <td>{{row['email']}}</td>
+			<td><a href="?action=delete&id={{ row['contact'] }}" class="btn btn-danger">Delete</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+</center>
+<style type="text/css">
+  	td,th,tr{
+  		border: none!important;
+  	}
+  </style>
+{% include 'footer.html' %}

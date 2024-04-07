@@ -1,0 +1,23 @@
+{% include 'student_header.html' %}
+<center>
+	<h1>View Academics</h1>
+	<form method="post">
+		<table class="table" style="width:500px;color:white;">
+			<tr>
+				<th>Sl no</th>
+				<th>Academics</th>
+				<th>Description</th>
+                <th>Image</th>
+			</tr>
+			{% for row in data['view'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['academic']}}</td>
+				<td>{{row['description']}}</td>
+                <td><img src="/{{row['image']}}" alt="" srcset="" width="300px"></td>
+			</tr>
+			{% endfor %}
+		</table>
+</center>
+
+{% include 'footer.html' %}

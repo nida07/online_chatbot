@@ -1,0 +1,73 @@
+{% include 'adminheader.html' %}
+      <style>
+    table {
+
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 20);
+    }
+    .btn-success {
+        background-color: #28a745;
+        color: #fff;
+    }
+</style>
+<style>
+	th,td{
+		height: 30px;
+		color: antiquewhite;
+		padding: 15px;
+	}
+</style>
+<center>
+<h1>Activities</h1>
+	<form method="post" enctype="multipart/form-data">
+	<table class="table" style="width:500px;color:white;">
+		<tr>
+			<th>Activity</th>
+			<td><input type="text" name="activity" required="" class="form-control" style="width: 250px;height: 38px;border-radius: 10px;color: white"></td>
+		</tr>
+        <tr>
+			<th>Description</th>
+			<td><input type="text" name="description" required="" class="form-control" style="width: 250px;height: 38px;border-radius: 10px;color: white"></td>
+		</tr>
+        <tr>
+			<th>Date</th>
+			<td><input type="date" name="date" required="" class="form-control" style="width: 250px;height: 38px;border-radius: 10px;color: white"></td>
+		</tr>
+        <tr>
+			<th>Image</th>
+			<td><input type="file" name="image" required="" class="form-control" ></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2">
+				<input type="submit" name="submit" value="SUBMIT" class="btn btn-primary">
+			</td>
+		</tr>
+	</table>
+
+	<table class="table" style="width:500px;color:white;">
+		
+		<tr>
+			<th>Activities</th>
+			<th>Description</th>
+            <th>Date</th>
+			<th>Image</th>
+		</tr>
+		{% for row in data['view'] %}
+		<tr>    
+			<td>{{ row['activity'] }}</td>
+            <td>{{row['description']}}</td>
+            <td>{{row['date']}}</td>
+            <td><img src="/{{row['image']}}" alt="" srcset="" width="300px"></td>
+			<td><a href="?action=delete&id={{ row['activity_id'] }}" class="btn btn-danger">Delete</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+</center>
+<style type="text/css">
+  	td,th,tr{
+  		border: none!important;
+  	}
+  </style>
+{% include 'footer.html' %}
